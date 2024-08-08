@@ -75,6 +75,8 @@ scores[0] = 50; // => mengubah isi element dari array index ke 0
 
 console.log(scores[0]); // => output: 50
 
+
+
 const fruits = ["apple", "banana", "kiwi"]; 
 
 console.log(fruits); // =>output apple, banana, kiwi
