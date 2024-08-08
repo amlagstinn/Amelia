@@ -22,6 +22,7 @@ CREATE TABLE students (
   grade integer(191) not null
   );
 
+
 #kalau values itu kalian bisa melakukan penambahan banyak sekaligus 
 #kalau value kalian hanya bisa menambahkan 1 record saja
 INSERT INTO student (name, grade) VALUES
@@ -84,3 +85,52 @@ SELECT
     teachers.name as nama_guru
 FROM classes
 INNER JOIN teacher on classes.teacher_id = teachers.id
+
+#kata kunci database
+DROP TABLE students; 
+
+ALTER TABLE students
+ADD COLUMN <NAME> <TYPE> <RULES>,
+ADD <>
+
+# untuk menampilkan data 
+SELECT
+    students.name as nama_mahasiswa,
+    classes.name as nama_kelas
+FROM students
+INNER JOIN classes on students.class_id = classes.id
+
+# many-to-many perlu yang namanya pivot table atau table perantara untuk menghubungkannya
+CREATE TABLE student_has_teachers (
+    student_id bigint not null,
+    teacher_id bigint not null
+
+    CONSTRAINT 
+        FOREIGN KEY (student_id) REFERENCES student (id) ON DELETE CASCADE,
+    CONSTRAINT 
+        FOREIGN KEY (teacher_id) REFERENCES teachers (id) ON DELETE CASCADE
+
+);
+
+INSERT INTO teachers (name) VALUES ('Dony');
+INSERT INTO students (class_id, name, grade) VALUES
+(1, 'Raymona', 'B'),
+(2, 'Gusna', 'C');
+
+INSERT INTO classes (teacher_id, name) VALUES
+(2, 'Ilmu Antropologi');
+
+INSERT INTO student_has_teachers (teacher_id, 'student_id') VALUES 
+('1', '3'),
+('2', '4'),
+('1', '5'),
+('2', '6');
+
+SELECT
+    students.name as nama_mahasiswa,
+    teachers.name as nama_guru
+    classes.name as nama_kelas
+FROM teachers
+INNER JOIN classes on teachers.class_id = classes.id
+
+
